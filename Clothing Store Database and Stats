@@ -1,0 +1,28 @@
+--Create a clothing store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, item  TEXT, size TEXT, price INTEGER, quantity INTEGER);
+
+INSERT INTO store VALUES (1, "t-shirts", "small", 15.99, 60);
+INSERT INTO store VALUES (2, "jeans", "large", 39.99, 50);
+INSERT INTO store VALUES (3, "shorts", "medium", 29.99, 45);
+INSERT INTO store VALUES (4, "jackets", "large", 40.99, 30);
+INSERT INTO store VALUES (5, "dresses", "medium", 25.99, 40);
+INSERT INTO store VALUES (6, "skirts", "large", 25.99, 25);
+INSERT INTO store VALUES (7, "sweaters", "small", 30.99, 30);
+INSERT INTO store VALUES (8, "coats", "medium", 40.99, 15);
+INSERT INTO store VALUES (9, "trousers", "medium", 30.99, 20);
+INSERT INTO store VALUES (10, "hats", "small", 15.99, 15);
+INSERT INTO store VALUES (11, "blouses", "medium", 19.99, 40);
+INSERT INTO store VALUES (12, "hoodies", "large", 35.99, 50);
+INSERT INTO store VALUES (13, "leggings", "small", 15.99, 45);
+INSERT INTO store VALUES (14, "swimsuits", "large", 25.99, 20);
+INSERT INTO store VALUES (15, "socks", "small", 10.99, 20);
+
+--display the database ordered by price.
+SELECT * FROM store ORDER BY price asc;
+
+--what are the 5 most expensive items?
+SELECT * FROM store ORDER BY price desc LIMIT 5;  
+
+--which items come in a size large?
+SELECT item, size FROM store WHERE size = "large";
