@@ -1,0 +1,120 @@
+/* Marvel Heroes and Villains
+ Based on the website http://marvel.wikia.com/Main_Page
+ with popularity data from http://observationdeck.io9.com/something-i-found-marvel-character-popularity-poll-cb-1568108064 
+ and power grid data from http://marvel.wikia.com/Power_Grid#Power
+ Collected by: https://www.khanacademy.org/profile/Mentrasto/
+ */
+
+CREATE TABLE marvels (ID INTEGER PRIMARY KEY,
+    name TEXT,
+    popularity INTEGER,
+    alignment TEXT,
+    gender TEXT, 
+    height_m NUMERIC,
+    weight_kg NUMERIC,
+    hometown TEXT,
+    intelligence INTEGER,
+    strength INTEGER,
+    speed INTEGER,
+    durability INTEGER,
+    energy_Projection INTEGER,
+    fighting_Skills INTEGER);
+    
+INSERT INTO marvels VALUES(1, "Spider Man", 1, "Good", "Male", 1.78, 75.75, "USA", 4, 4, 3, 3, 1, 4); 
+INSERT INTO marvels VALUES(2, "Iron Man", 20, "Neutral", "Male", 1.98, 102.58, "USA", 6, 6, 5, 6, 6, 4); 
+INSERT INTO marvels VALUES(3, "Hulk", 18, "Neutral", "Male", 2.44, 635.29, "USA", 1, 7, 3, 7, 5, 4); 
+INSERT INTO marvels VALUES(4, "Wolverine", 3, "Good", "Male", 1.6, 88.46, "Canada", 2, 4, 2, 4, 1, 7);
+INSERT INTO marvels VALUES(5, "Thor", 5, "Good", "Male", 1.98, 290.3, "Asgard", 2, 7, 7, 6, 6, 4);
+INSERT INTO marvels VALUES(6, "Green Goblin", 91, "Bad", "Male", 1.93, 174.63, "USA", 4, 4, 3, 4, 3, 3);
+INSERT INTO marvels VALUES(7, "Magneto", 11, "Neutral", "Male", 1.88, 86.18, "Germany", 6, 3, 5, 4, 6, 4);
+INSERT INTO marvels VALUES(8, "Thanos", 47, "Bad", "Male", 2.01, 446.79, "Titan", 6, 7, 7, 6, 6, 4);
+INSERT INTO marvels VALUES(9, "Loki", 32, "Bad", "Male", 1.93, 238.14, "Jotunheim", 5, 5, 7, 6, 6, 3);
+INSERT INTO marvels VALUES(10, "Doctor Doom", 19, "Bad", "Male", 2.01, 188.24, "Latveria", 6, 4, 5, 6, 6, 4);
+INSERT INTO marvels VALUES(11, "Jean Grey", 8, "Good", "Female", 1.68, 52.16, "USA", 3, 2, 7, 7, 7, 4);
+INSERT INTO marvels VALUES(12, "Rogue", 4, "Good", "Female", 1.73, 54.43, "USA", 7, 7, 7, 7, 7, 7);
+INSERT INTO marvels VALUES(13, "Storm", 2, "Good", "Female", 1.80, 66, "Kenya", 2, 2, 3, 2, 5, 4);
+INSERT INTO marvels VALUES(14, "Nightcrawler", 6, "Good", "Male", 1.75, 73, "Germany", 3, 2, 7, 2, 1, 3);
+INSERT INTO marvels VALUES(15, "Gambit", 7, "Good", "Male", 1.88, 81, "EUA", 2, 2, 2, 2, 2, 4);
+INSERT INTO marvels VALUES(16, "Captain America", 9, "Good", "Male", 1.88, 108, "EUA", 3, 3, 2, 3, 1, 6);
+INSERT INTO marvels VALUES(17, "Cyclops", 10, "Good", "Male", 1.90, 88, "EUA", 3, 2, 2, 2, 5, 4);
+INSERT INTO marvels VALUES(18, "Emma Frost", 12, "Neutral", "Female", 1.78, 65, "EUA", 4, 4, 2, 5, 5, 3);
+INSERT INTO marvels VALUES(19, "Kitty Pryde", 13, "Good", "Female", 1.68, 50, "EUA", 4, 2, 2, 3, 1, 5);
+INSERT INTO marvels VALUES(20, "Daredevil", 14, "Good", "Male", 1.83, 91, "EUA", 3, 3, 2, 2, 4, 5);
+INSERT INTO marvels VALUES(21, "Punisher", 50, "Neutral", "Male", 1.85, 91, "EUA", 3, 3, 2, 2, 1, 6);
+INSERT INTO marvels VALUES(22, "Silver Surfer", 33, "Good", "Male", 1.93, 102, "Zenn-La", 3, 7, 7, 6, 7, 2);
+INSERT INTO marvels VALUES(23, "Ghost Rider", 86, "Good", "Male", 1.88, 99, "EUA", 2, 4, 3, 5, 4, 2);
+INSERT INTO marvels VALUES(24, "Venon", 78, "Neutral", "Male", 1.90, 118, "EUA", 3, 4, 2, 6, 1, 4);
+INSERT INTO marvels VALUES(25, "Juggernaut", 76, "Neutral", "Male", 2.87, 862, "EUA", 2, 7, 2, 7, 1, 4);
+INSERT INTO marvels VALUES(26, "Professor X", 58, "Good", "Male", 1.83, 86, "EUA", 5, 2, 2, 2, 5, 3);
+
+SELECT * FROM marvels;
+
+/* What are average, max, and min values in the data?  */
+
+SELECT 
+ROUND(AVG(popularity),2) AS "Avg Popularity", 
+ROUND(AVG(height_m),2) AS "Avg Height",
+ROUND(AVG(weight_kg),2) AS "Avg Weight",
+ROUND(AVG(intelligence),2) AS "Avg Intelligence",
+ROUND(AVG(strength),2) AS "Avg Strength",
+ROUND(AVG(speed),2) AS "Avg Speed",
+ROUND(AVG(durability),2) AS "Avg Durability",
+ROUND(AVG(energy_Projection),2) AS "Avg Energy Projection", 
+ROUND(AVG(fighting_skills),2) AS "Avg Fighting Skills" 
+FROM marvels; 
+
+SELECT 
+MAX(popularity) AS "Max Popularity",
+MAX(height_m) AS "Max Height",
+MAX(weight_kg) AS "Max Weight",
+MAX(intelligence) AS "Max Intelligence",
+MAX(strength) AS "Max Strength",
+MAX(speed) AS "Max Speed",
+MAX(durability) AS "Max Durability",
+MAX(energy_Projection) AS "Max Energy Projection",
+MAX(fighting_skills) AS "Max Fighting Skills"
+FROM marvels;
+
+SELECT 
+MIN(popularity) AS "Min Popularity",
+MIN(height_m) AS "Min Height",
+MIN(weight_kg) AS "Min Weight",
+MIN(intelligence) AS "Min Intelligence",
+MIN(strength) AS "Min Strength",
+MIN(speed) AS "Min Speed",
+MIN(durability) AS "Min Durability",
+MIN(energy_Projection) AS "Min Energy Projection",
+MIN(fighting_skills) AS "Min Fighting Skills"
+FROM marvels;
+
+/* Which female/male characters have the most intelligence vs least?*/
+SELECT name, gender, intelligence 
+FROM marvels
+GROUP BY gender 
+HAVING max(intelligence); 
+
+SELECT name, gender, intelligence 
+FROM marvels
+GROUP BY gender 
+HAVING min(intelligence); 
+
+/*How many characters are above avg?*/
+SELECT 
+COUNT(*)
+FROM marvels
+WHERE popularity > 27.42;
+
+    
+/* Group characters by popularity and show whether they are above or below avg CASE */
+SELECT name, popularity,
+CASE 
+    WHEN popularity > 27.42 THEN "above avg"
+    WHEN popularity < 27.42 THEN "below avg"
+    END as "popularity zone"
+FROM marvels
+GROUP BY popularity;
+
+/* Which characters have good alignment that are from the USA?*/
+SELECT name, gender 
+FROM marvels
+WHERE alignment = "Good" AND hometown = "USA";
