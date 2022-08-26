@@ -1,6 +1,5 @@
+--Create & join multiple tables
 /* Created 3 different tables regarding singers, albums and collaborations to show example of joining tables */
-
-/* Create table about the people and what they do here */
 
 CREATE TABLE singers (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER);
 
