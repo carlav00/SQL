@@ -32,7 +32,7 @@ INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (2, 4, "Rain On Me");
 /* Display singer's name with album title & release year from newest to oldest */
 SELECT singers.name, albums.title, albums.released
 FROM singers
-LEFT OUTER JOIN albums
+LEFT OUTER JOIN albums;
 ON albums.singer_id = singers.id
 ORDER BY released desc; 
 
