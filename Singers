@@ -18,7 +18,7 @@ INSERT INTO singers (name, age) VALUES ("Rex Orange County", 24);
 INSERT INTO singers (name, age) VALUES ("SZA", 32);
 INSERT INTO singers (name, age) VALUES ("WILLOW", 21);
 INSERT INTO singers (name, age) VALUES ("Megan Thee Stallion", 27);
-
+INSERT INTO singers (name, age) VALUES ("Demi Lovato", 30);
 
 CREATE TABLE albums (id INTEGER PRIMARY KEY AUTOINCREMENT, singer_id INTEGER, title TEXT, released INTEGER, metascore INTEGER);
 
@@ -46,7 +46,8 @@ INSERT INTO albums (singer_id, title, released, metascore) VALUES (14, "lately I
 INSERT INTO albums (singer_id, title, released, metascore) VALUES (15, "Traumazine", 2022, 82);
 INSERT INTO albums (singer_id, title, released, metascore) VALUES (15, "Good News", 2020, 85);
 INSERT INTO albums (singer_id, title, released, metascore) VALUES (15, "Suga", 2020, 77);
-
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (16, "Holy Fvck", 2022, 78);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (16, "Dancing with the Devil...The Art of Starting Over", 2021, 73);
 
 CREATE TABLE collabs (id INTEGER PRIMARY KEY AUTOINCREMENT,singer1_id INTEGER, singer2_id INTEGER, song TEXT);
 
@@ -60,7 +61,7 @@ INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (5, 9, "LA NOCHE DE AN
 INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (9, 10, "LA FAMA");
 INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (15, 13, "Freaky Girls"); 
 INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (15, 11, "Sweetest Pie"); 
-
+INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (16, 2, "Met Him last Night");
 
 /* Display singer's name with album title, release yr & metascore from newest to oldest */
 SELECT singers.name, albums.title, albums.released, albums.metascore
