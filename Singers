@@ -1,32 +1,66 @@
 --Create & join multiple tables
-/* Created 3 different tables regarding singers, albums and collaborations to show example of joining tables */
+/* Created 3 different tables about favorite singers, albums and collaborations to show example of joining tables */
 
 CREATE TABLE singers (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER);
 
-INSERT INTO singers (name, age) VALUES ("Beyonce", 40); 
+INSERT INTO singers (name, age) VALUES ("Beyoncé", 40); 
 INSERT INTO singers (name, age) VALUES ("Ariana Grande", 29);
 INSERT INTO singers (name, age) VALUES ("Doja Cat", 26);
 INSERT INTO singers (name, age) VALUES ("Lady Gaga", 28);
 INSERT INTO singers (name, age) VALUES ("Bad Bunny", 28);
+INSERT INTO singers (name, age) VALUES ("Taylor Swift", 32);
+INSERT INTO singers (name, age) VALUES ("Harry Styles", 28); 
+INSERT INTO singers (name, age) VALUES ("Olivia Rodrigo", 19);
+INSERT INTO singers (name, age) VALUES ("Rosalía", 29); 
+INSERT INTO singers (name, age) VALUES ("The Weeknd", 32);
+INSERT INTO singers (name, age) VALUES ("Dua Lipa", 27);
+INSERT INTO singers (name, age) VALUES ("Rex Orange County", 24);
+INSERT INTO singers (name, age) VALUES ("SZA", 32);
+INSERT INTO singers (name, age) VALUES ("WILLOW", 21);
+INSERT INTO singers (name, age) VALUES ("Megan Thee Stallion", 27);
+
 
 CREATE TABLE albums (id INTEGER PRIMARY KEY AUTOINCREMENT, singer_id INTEGER, title TEXT, released INTEGER, metascore INTEGER);
 
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (1, "Renaissance", 2022, 92);
 INSERT INTO albums (singer_id, title, released, metascore) VALUES (1, "Lemonade", 2016, 92);
-INSERT INTO albums (singer_id, title, released, metascore) VALUES (1, "Renaissance", 2022, 92 );
 INSERT INTO albums (singer_id, title, released, metascore) VALUES (2, "thank u, next", 2019, 86);
 INSERT INTO albums (singer_id, title, released, metascore) VALUES (2, "Positions", 2020, 72);
 INSERT INTO albums (singer_id, title, released, metascore) VALUES (2, "Sweetener", 2018, 81);
 INSERT INTO albums (singer_id, title, released, metascore) VALUES (3, "Planet Her", 2021, 76);
 INSERT INTO albums (singer_id, title, released, metascore) VALUES (4, "Chromatica", 2020, 79);
-INSERT INTO albums (singer_id, title, released, metascore) VALUES (5, "Un Verano Sin Ti", 2022, 85); 
 INSERT INTO albums (singer_id, title, released, metascore) VALUES (5, "YHLQMDLG", 2020, 88);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (5, "Un Verano Sin Ti", 2022, 85); 
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (6, "Red (Taylor's Version)", 2021, 91); 
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (7, "Harry's House", 2022, 83); 
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (7, "Fine Line", 2019, 76);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (8, "SOUR", 2021, 83);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (9, "MOTOMAMI", 2022, 94);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (10, "After Hours", 2020, 80);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (10, "Starboy", 2016, 67);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (11, "Future Nostalgia", 2020, 88);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (12, "Pony", 2019, 76); 
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (12, "WHO CARES?", 2022, 70);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (13, "Ctrl", 2017, 86);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (14, "lately I feel EVERYTHING", 2021, 79);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (15, "Traumazine", 2022, 82);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (15, "Good News", 2020, 85);
+INSERT INTO albums (singer_id, title, released, metascore) VALUES (15, "Suga", 2020, 77);
+
 
 CREATE TABLE collabs (id INTEGER PRIMARY KEY AUTOINCREMENT,singer1_id INTEGER, singer2_id INTEGER, song TEXT);
 
-INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (1, 4, "Telephone");
-INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (2, 3, "I Don't Do Drugs");
-INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (2, 4, "Rain On Me");
-    
+INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (4, 1, "Telephone");
+INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (3, 2, "I Don't Do Drugs");
+INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (3, 13, "Kiss Me More");
+INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (4, 2, "Rain On Me");
+INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (10, 2, "Save Your Tears");
+INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (15, 1, "Savage Remix");
+INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (5, 9, "LA NOCHE DE ANOCHE");
+INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (9, 10, "LA FAMA");
+INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (15, 13, "Freaky Girls"); 
+INSERT INTO collabs (singer1_id, singer2_id, song) VALUES (15, 11, "Sweetest Pie"); 
+
 
 /* Display singer's name with album title, release yr & metascore from newest to oldest */
 SELECT singers.name, albums.title, albums.released, albums.metascore
@@ -35,7 +69,7 @@ LEFT OUTER JOIN albums
 ON albums.singer_id = singers.id
 ORDER BY released desc; 
 
-/* Display singers' names with the song they collaborated on */
+/* Display singers' names with the song they collaborated on*/
 SELECT a.name, b.name, song
 FROM collabs
 JOIN singers a
@@ -43,7 +77,7 @@ ON a.id = collabs.singer1_id
 JOIN singers b 
 ON b.id = collabs.singer2_id;
 
-/* Display albums & singer that received 85 or over metascore from lowest to highest */
+/*Display only albums that received 85 and over metascore from lowest to highest */
 SELECT albums.title AS album, singers.name AS singer, albums.metascore
 FROM singers
 LEFT OUTER JOIN albums
