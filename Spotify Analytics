@@ -58,7 +58,7 @@ GROUP BY track_name
 ORDER BY popularity DESC
 LIMIT 10;
 
-#Finally I determined how energetic are each of the most popular songs are.
+#Then I determined how energetic are each of the most popular songs are.
 SELECT track_name, artist_name, popularity, energy, 
 CASE
     WHEN energy > .68 THEN 'High Energy'
@@ -67,3 +67,18 @@ CASE
 END AS 'Energy Level'
 FROM BIT_DB.Spotifydata
 ORDER BY popularity DESC;
+
+#Finally I calculated the average popularity for the artists in the table, 
+#and for every artist with an average popularity of 90 or above, I showed their name, their average popularity, and labeled them as a “Top Star”.
+WITH popularity_average_CTE AS (
+SELECT s.artist_name,
+AVG(s.popularity) AS average_popularity
+FROM SpotifyData s 
+GROUP BY s.artist_name
+)
+ 
+SELECT  artist_name,
+        average_popularity,
+        'Top Star' AS tag
+FROM popularity_average_CTE
+WHERE average_popularity>=90;
