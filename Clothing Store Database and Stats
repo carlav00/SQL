@@ -19,10 +19,17 @@ INSERT INTO store VALUES (14, "swimsuits", "large", 25.99, 20);
 INSERT INTO store VALUES (15, "socks", "small", 10.99, 20);
 
 --display the database ordered by price.
-SELECT * FROM store ORDER BY price asc;
+SELECT * 
+FROM store 
+ORDER BY price ASC;
 
 --what are the 5 most expensive items?
-SELECT * FROM store ORDER BY price desc LIMIT 5;  
+SELECT * 
+FROM store 
+ORDER BY price DESC 
+LIMIT 5;  
 
 --which items come in a size large?
-SELECT item, size FROM store WHERE size = "large";
+SELECT item, size 
+FROM store 
+WHERE size = "large";
