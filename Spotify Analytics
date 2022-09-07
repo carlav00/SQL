@@ -58,7 +58,7 @@ GROUP BY track_name
 ORDER BY popularity DESC
 LIMIT 10;
 
-#Finally I determined how energetic are each of the most popular songs.
+#Finally I determined how energetic are each of the most popular songs are.
 SELECT track_name, artist_name, popularity, energy, 
 CASE
     WHEN energy > .68 THEN 'High Energy'
