@@ -51,9 +51,19 @@ FROM BIT_DB.Spotifydata
 ORDER BY duration_ms DESC
 LIMIT 1;
 
-#Next I determined the average danceability for the 10 most popular songs
+#Then I determined the average danceability for the 10 most popular songs
 SELECT track_name, AVG(danceability), popularity
 FROM BIT_DB.Spotifydata
 GROUP BY track_name
 ORDER BY popularity DESC
 LIMIT 10;
+
+#Finally I determined how energetic are each of the most popular songs.
+SELECT track_name, artist_name, popularity, energy, 
+CASE
+    WHEN energy > .68 THEN 'High Energy'
+    WHEN energy = .68 THEN 'Avg energy'
+    ELSE 'Low energy'
+END AS 'Energy Level'
+FROM BIT_DB.Spotifydata
+ORDER BY popularity DESC;
