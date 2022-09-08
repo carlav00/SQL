@@ -3,7 +3,6 @@ and includes tables for artists, albums, media tracks, invoices and customers.
 Using this dataset in SQLiteStudio (3.3.3), I answered multiple questions using the following written SQL queries */
 
 /*Show Customers(full name, customer ID, and country) who are not in the US*/
-
 SELECT 
     FirstName, 
     LastName, 
@@ -19,3 +18,71 @@ WHERE Country = 'Brazil';
 
 /*Find the Invoices of customers who are from Brazil. 
 The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.*/
+SELECT 
+    cust.FirstName, 
+    cust.LastName, 
+    inv.InvoiceId, 
+    inv.BillingCountry, 
+    inv.InvoiceDate
+FROM chinook.invoices AS inv 
+LEFT JOIN chinook.customers AS cust 
+ON inv.CustomerId = cust.CustomerId 
+WHERE inv.BillingCountry = "Brazil";
+
+/* Show the Employees who are Sales Agents.*/
+SELECT * 
+FROM chinook.employees
+WHERE Title = 'Sales Support Agent';
+
+/*Find a unique/distinct list of billing countries from the Invoice table.*/
+SELECT DISTINCT BillingCountry
+FROM chinook.invoices;
+
+/*Provide a query that shows the invoices associated with each sales agent. 
+The resulting table should include the Sales Agent's full name.*/
+SELECT 
+    emp.FirstName,
+    emp.LastName,
+    inv.InvoiceId
+FROM chinook.employees emp
+JOIN chinook.customers cust 
+ON cust.SupportRepID = emp.EmployeeID 
+JOIN chinook.invoices inv
+ON inv.customerID = cust.CustomerId;
+
+/*Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.*/
+SELECT 
+    emp.Firstname, 
+    emp.LastName, 
+    cust.FirstName, 
+    cust.LastName, 
+    cust.Country, 
+    inv.total
+FROM chinook.employees emp 
+JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices Inv ON Inv.CustomerId = cust.CustomerId;
+
+/*How many Invoices were there in 2009?*/
+SELECT COUNT(*)
+FROM chinook.invoices
+WHERE InvoiceDate LIKE '%2009%';
+
+/*What are the total sales for 2009?*/
+SELECT SUM(Total)
+FROM chinook.invoices
+WHERE InvoiceDate LIKE '%2009%'
+
+/*Write a query that includes the purchased track name with each invoice line item.*/
+SELECT 
+    t.Name, 
+    i.InvoiceLineId
+FROM chinook.invoice_items i
+JOIN chinook.tracks t ON i.TrackId = t.TrackId;
+
+/*Write a query that includes the purchased track name AND artist name with each invoice line item.*/
+SELECT 
+    t.Name, 
+    t.Composer,
+    i.InvoiceLineId
+FROM chinook.invoice_items i
+JOIN chinook.tracks t ON i.TrackId = t.TrackId;
