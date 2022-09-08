@@ -59,8 +59,10 @@ SELECT
     cust.Country, 
     inv.total
 FROM chinook.employees emp 
-JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
-JOIN chinook.Invoices Inv ON Inv.CustomerId = cust.CustomerId;
+JOIN chinook.Customers cust 
+ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices Inv 
+ON Inv.CustomerId = cust.CustomerId;
 
 /*How many Invoices were there in 2009?*/
 SELECT COUNT(*)
@@ -114,7 +116,7 @@ GROUP BY emp.FirstName
 
 /*Which sales agent made the most in sales in 2009?*/
 SELECT emp.FirstName, emp.LastName,
-ROUND(SUM(Inv.Total), 2) as 'Total Sales' 
+ROUND(SUM(Inv.Total), 2) AS 'Total Sales' 
 FROM chinook.Employees emp
 
 JOIN chinook.Customers cust 
