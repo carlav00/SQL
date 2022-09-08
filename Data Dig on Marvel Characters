@@ -105,7 +105,6 @@ FROM marvels
 WHERE gender = 'Female'
 AND fighting_Skills < 4.12;
 
-    
 /* Group characters by popularity and show whether they are above or below avg CASE */
 SELECT name, popularity,
 CASE 
