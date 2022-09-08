@@ -98,21 +98,22 @@ FROM marvels
 GROUP BY gender 
 HAVING min(intelligence); 
 
-/*How many characters are above avg?*/
+/*How many female characters have above avg fighting skills?*/
 SELECT 
 COUNT(*)
 FROM marvels
-WHERE popularity > 27.42;
+WHERE gender = 'Female'
+AND fighting_Skills < 4.12;
 
     
 /* Group characters by popularity and show whether they are above or below avg CASE */
 SELECT name, popularity,
 CASE 
-    WHEN popularity > 27.42 THEN "above avg"
-    WHEN popularity < 27.42 THEN "below avg"
+    WHEN popularity < 27.42 THEN "above avg"
+    WHEN popularity > 27.42 THEN "below avg"
     END as "popularity zone"
 FROM marvels
-GROUP BY popularity;
+ORDER BY popularity;
 
 /* Which characters have good alignment that are from the USA?*/
 SELECT name, gender 
